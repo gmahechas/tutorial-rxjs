@@ -8,7 +8,7 @@ const interval$ = new Observable<number>(subscriber => {
   const interval = setInterval(() => {
     count++
     subscriber.next(count);
-    console.log(count);
+    //console.log('Next:::',count); // Test return () => {}
   }, 1000);
 
   return () => {
@@ -17,9 +17,10 @@ const interval$ = new Observable<number>(subscriber => {
   }
 });
 
-const suscription = interval$.subscribe();
+const suscription = interval$.subscribe(console.log);
 
 setTimeout(() => {
   suscription.unsubscribe();
   console.log('Timeout completed');
-}, 3000);
+}, 5000);
+

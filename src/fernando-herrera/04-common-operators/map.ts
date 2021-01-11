@@ -5,6 +5,7 @@ const observable1$ = range(1, 5);
 const observable2$ = fromEvent<KeyboardEvent>(document, 'keyup');
 
 observable1$.pipe(
+  //   In      Out
   map<number, number>(value => value * 10)
 ).subscribe(console.log);
 

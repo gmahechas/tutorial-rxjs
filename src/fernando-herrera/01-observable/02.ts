@@ -2,12 +2,6 @@
 
 import { Observable, Observer } from 'rxjs';
 
-const observer: Observer<any> = {
-  next: value => console.log('Next:::', value),
-  error: error => console.error('Error:::', error),
-  complete: () => console.log('Completed')
-};
-
 // const obs$ = Observable.create();
 const observable$ = new Observable<string>(subscriber => {
   subscriber.next('Hello');
@@ -20,4 +14,9 @@ const observable$ = new Observable<string>(subscriber => {
   subscriber.complete();
 });
 
+const observer: Observer<string> = {
+  next: value => console.log('Next:::', value),
+  error: error => console.error('Error:::', error),
+  complete: () => console.log('Completed')
+};
 observable$.subscribe(observer);
